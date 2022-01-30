@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<!-- ADDING JS AND CSS VIA EXTERNAL FILES -->
+<html>
+  <head>
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- if you remove the `defer` attribribute, it won't work, because this
+        JavaScript expects ` <div id="javascript-will-add-content">` but it loads
+        and executes before that element is available -->
+    <script defer src="js/some_javascript.js"></script>
+  </head>
+  <body>
+    <main>
+      <p>Based on a high quality <a href="https://stackoverflow.com/questions/4616694/what-is-event-bubbling-and-capturing#answer-4616720">Stackoverflow response</a></p>
+      <div>1
+        <div>2
+            <div>3
+                <div>4
+                    <div>5</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button id="clear">clear output</button>
+    <label>
+      STOP PROPAGATION
+      <input type="checkbox" id="stop-event-propagation"  />
+    </label>
+    <label id="prop-type" hidden>
+        Propagation type:
+        <select>
+          <option selected>Bubble</option>
+          <option>Capture</option>
+        </select>
+    </label>
+    <section id="log"></section>
+    </main>
+    
+  </body>
+</html>
