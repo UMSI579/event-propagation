@@ -11,11 +11,11 @@
   <body>
     <main>
       <p>Based on a high quality <a href="https://stackoverflow.com/questions/4616694/what-is-event-bubbling-and-capturing#answer-4616720">Stackoverflow response</a></p>
-      <div>1
-        <div>2
-            <div>3
-                <div>4
-                    <div>5</div>
+      <div data-start>A
+        <div>B
+            <div>C
+                <div>D
+                    <div>E</div>
                 </div>
             </div>
         </div>
@@ -25,7 +25,7 @@
       STOP PROPAGATION
       <input type="checkbox" id="stop-event-propagation"  />
     </label>
-    <label id="prop-type" hidden>
+    <label id="prop-type">
         Propagation type:
         <select>
           <option selected>Bubble</option>
@@ -34,6 +34,6 @@
     </label>
     <section id="log"></section>
     </main>
-    
+
   </body>
 </html>

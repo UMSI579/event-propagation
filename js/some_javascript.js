@@ -5,7 +5,10 @@
    const stopEventPropagation = document.querySelector('#stop-event-propagation');
    const propagationTypeLabel = document.querySelector('#prop-type');
    const propagationType = document.querySelector('#prop-type select');
+   let trackBub = 0;
+   let trackCap = 0;
 
+  let trackElement;
    function log(msg) {
       logElement.innerHTML += ('<p>' + msg + '</p>');
    }
@@ -16,8 +19,25 @@
             return;
          }
          e.stopPropagation();
-         console.log('propy stopped');
       }
+
+     if (propagationType.value === 'Capture') {
+       let element = document.querySelector("[data-start]");
+       for(let i = 0; i < trackCap; i++) {
+         element = element.children[0];
+       }
+       setTimeout(() => {
+         element.setAttribute('style', 'outline-color:orange; outline-width: 12px; outline-style: solid')
+         setTimeout(() => {
+           element.removeAttribute('style');
+         }, 300)
+       }, trackCap * 300)
+       trackCap += 1
+       setTimeout(() => {
+         trackCap = 0;
+       }, 2000)
+     }
+
       log('capture: ' + this.firstChild.nodeValue.trim());
 
    }
@@ -28,8 +48,23 @@
             return;
          }
          e.stopPropagation();
-         console.log('propy stopped');
       }
+     if (propagationType.value === 'Bubble') {
+       let element = e.target;
+       for(let i = 0; i < trackBub; i++) {
+         element = element.parentNode
+       }
+       setTimeout(() => {
+         element.setAttribute('style', 'outline-color:green; outline-width: 12px; outline-style: solid')
+         setTimeout(() => {
+           element.removeAttribute('style');
+         }, 300)
+       }, trackBub * 300)
+       trackBub += 1
+       setTimeout(() => {
+         trackBub = 0;
+       }, 2000)
+     }
       log('bubble: ' + this.firstChild.nodeValue.trim());
    }
 
@@ -44,7 +79,5 @@
    }
    const clearButton = document.getElementById('clear');
    clearButton.addEventListener('click', clearOutput);
-   stopEventPropagation.addEventListener('change', (e) => {
-      propagationTypeLabel.hidden = !stopEventPropagation.checked;
-   });
+
  })();

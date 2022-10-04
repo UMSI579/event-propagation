@@ -9,6 +9,7 @@ div {
     background: #fff;
     border: 1px solid #aaa;
     cursor: pointer;
+  box-sizing: border-box;
 }
 
 div:hover {
@@ -18,4 +19,4 @@ div:hover {
 
 main {
     padding: 60px 30px;
-} 
+}
