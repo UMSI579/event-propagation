@@ -8,12 +8,16 @@
    let trackBub = 0;
    let trackCap = 0;
 
+   const dataStart = document.querySelector("[data-start]");
+
+
   let trackElement;
    function log(msg) {
       logElement.innerHTML += ('<p>' + msg + '</p>');
    }
 
    function capture(e) {
+     dataStart.setAttribute('disabled', true);
       if (document.querySelector('#stop-event-propagation').checked) {
          if (propagationType.value === 'Bubble') {
             return;
@@ -35,6 +39,7 @@
        trackCap += 1
        setTimeout(() => {
          trackCap = 0;
+         dataStart.removeAttribute('disabled');
        }, 2000)
      }
 
@@ -43,7 +48,8 @@
    }
 
    function bubble(e) {
-      if (document.querySelector('#stop-event-propagation').checked) {
+     dataStart.setAttribute('disabled', true);
+     if (document.querySelector('#stop-event-propagation').checked) {
          if (propagationType.value === 'Capture') {
             return;
          }
@@ -63,6 +69,8 @@
        trackBub += 1
        setTimeout(() => {
          trackBub = 0;
+         dataStart.removeAttribute('disabled');
+
        }, 2000)
      }
       log('bubble: ' + this.firstChild.nodeValue.trim());
