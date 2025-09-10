@@ -11,6 +11,10 @@
   <body>
     <main>
       <p>Based on a high quality <a href="https://stackoverflow.com/questions/4616694/what-is-event-bubbling-and-capturing#answer-4616720">Stackoverflow response</a></p>
+      <p>Event propagation is instantaneous - but this shows it as if it were slowed down. Click a section, and every 300ms it will propagate to the next element.
+        <small>note that it will continue propgating all the way to the body tag - but we only visualize it in the boxes below</small></p>
+      <p>JavaScript defaults to propagation being active, and using the "Bubble" type.</p>
+      <p>"Capture" is uncommon to use, but here to demonstrate.</p>
       <div data-start>A
         <div>B
             <div>C
